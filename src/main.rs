@@ -50,8 +50,7 @@ impl EventHandler for Handler {
                     .await
                     .expect("Failed to fetch channel")
                     .iter()
-                    .find(|v| v.user.id == c.target)
-                    .is_some()
+                    .any(|v| v.user.id == c.target)
                 {
                     return;
                 }
