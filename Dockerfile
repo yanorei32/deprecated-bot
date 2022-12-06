@@ -1,6 +1,8 @@
 FROM rust:1.65.0 as build-env
 LABEL maintainer="yanorei32"
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 WORKDIR /usr/src
 RUN cargo new deprecated-bot
 COPY LICENSE Cargo.toml Cargo.lock /usr/src/deprecated-bot/
