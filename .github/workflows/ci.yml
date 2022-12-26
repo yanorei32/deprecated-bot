@@ -65,14 +65,14 @@ jobs:
       - name: Create tagname
         id: tagname
         run: |
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          VERSION="$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')"
           # ${{ github.ref }} will replaced by GitHub Actions
           # shellcheck disable=SC2193
           [[ "${{ github.ref }}" == refs/tags/* ]] && VERSION="${VERSION/v/}"
           [[ "$VERSION" == "master" ]] && VERSION=latest
           # shellcheck disable=SC2193
           [[ "${{ github.ref }}" == refs/pull/* ]] && VERSION=dontpush
-          echo $VERSION
+          echo "$VERSION"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Build and Push
