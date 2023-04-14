@@ -19,7 +19,7 @@ RUN cargo build --release
 COPY src/* /usr/src/deprecated-bot/src/
 RUN touch src/* && cargo build --release
 
-FROM debian:bullseye@sha256:7b991788987ad860810df60927e1adbaf8e156520177bd4db82409f81dd3b721
+FROM debian:bullseye@sha256:0a78ed641b76252739e28ebbbe8cdbd80dc367fba4502565ca839e5803cfd86e
 
 COPY --chown=root:root --from=build-env \
 	/usr/src/deprecated-bot/CREDITS \
